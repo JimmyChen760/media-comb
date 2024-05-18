@@ -3,7 +3,7 @@ import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx'
 import Dashboard from './components/Dashboard.jsx';
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import NavBar from './components/Navbar.jsx'
 
 function App() {

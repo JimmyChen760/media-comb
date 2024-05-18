@@ -1,0 +1,213 @@
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+}
+
+/* .login {
+  /* position:absolute ; */
+  /* align-items: center;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  width: 500px;
+  height: 100px;
+} */
+
+/* .login h2 {
+  color: #e8e1e1;
+  text-align: center;
+} */
+
+
+
+.login-button{
+  display: inline;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #232121;
+  color: white;
+  border: none; 
+  border-radius: 5px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.login > h1 {
+  font-size: 40px;
+  padding-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login > p > a {
+  color: rgb(162, 162, 162);
+}
+
+.login > p {
+  padding-top: 5px;
+  font-size: 20px;
+}
+
+.login-form-textbox {
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  height: 45px;
+  width: 250px;
+}
+
+.login-form-textbox::placeholder {
+  font-size: 22px;
+}
+
+.login-form-submit {
+  border: 1px solid black;
+  border-radius: 6px;
+  height: 34px;
+  width: 150px;
+  font-size: 22px;
+  margin: 5px;
+  background-color: white;
+  transition: background-color 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* button:hover {
+  background-color: #686868;
+  color: white
+} */
+
+.header {
+  font-size: 36px;
+  margin: 10px;
+  /* background: linear-gradient(45deg, #f06, #9f6); */
+  position: absolute;
+  border-bottom: 2px solid #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+  /* color: transparent; */
+}
+
+.register-form-unidropdown {
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  height: 34px;
+  width: 250px;
+}
+
+
+#twitter-button:hover {
+  background-color: #3282c3; /* Darker green background on hover */
+}
+
+#reddit-button:hover {
+  background-color: orange; /* Darker green background on hover */
+}
+
+.login-button:active {
+  /* background-color: #45a049; */
+  box-shadow: 0 2px #666; /* Push down shadow on click */
+  transform: translateY(2px); /* Slightly push the button down */
+} */ */
+
+.dashboard{
+  align-items:center;
+  
+
+}
+#dashboard-title{
+  text-align: center;
+}
+
+.dashboard-wall{
+  /* background-color: white; */
+  /* outline:0.5px solid white; */
+  width:400px;
+  height: 800px;
+}
+
+#post-info{
+  color:red;
+}
+.dashboard-post{
+  
+  align-items:center;
+  margin:auto;
+  width: 350px;
+  height: 200px;
+  background-color: white;
+  opacity: 50%;
+}
+
+.post{
+  background-color: black;
+  border: 1px, black;
+  border-radius: 5%;
+  margin-bottom: 20px;
+}
+
+.author{
+  color: #666;
+  margin:auto;
+  padding-left: 10px;
+  padding-top:5px;
+}
+
+.screen-name{
+  padding-left: 10px;
+}
+
+.post-info{
+  font-size: 10px;
+  padding-left:15px;
+}
+
+.post-stats{
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-left: 60px;
+  
+}
+
+.likes{
+  margin-left: 100px;
+  color: #666;
+
+}
+
+
+.retweets{
+  color: #666;
+}
+
+.content{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.dashboard{
+  margin: auto;
+  justify-content: space-between;
+}
+
+
