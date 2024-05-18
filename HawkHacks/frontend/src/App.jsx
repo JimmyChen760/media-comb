@@ -9,17 +9,26 @@ import NavBar from './components/Navbar.jsx'
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [connectedLinkedin, setConnectedLinkedin] = useState(false);
+  const [connectedTwitter, setConnectedTwitter] = useState(false);
+  const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
 
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        
-        <Route path='/' element={<Dashboard/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/' element={<Dashboard 
+          connectedLinkedin={connectedLinkedin} 
+          connectedTwitter={connectedTwitter} 
+          connectedReddit={connectedReddit} 
+          setConnectedLinkedin={setConnectedLinkedin}
+          setConnectedTwitter={setConnectedTwitter}
+          setConnectedReddit={setConnectedReddit}
+        />}></Route>
+        <Route path='/login' element={<Login />}></Route>
         <Route path='signup' element={<SignUp/>}></Route>
+        
       </Routes>
     </BrowserRouter>
     
