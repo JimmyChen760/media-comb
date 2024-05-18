@@ -1,6 +1,6 @@
 import React from 'react';
 import Dashboard from './Dashboard.jsx'; // Adjust the path as necessary
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function Login() {
   const handleRedditLogin = () => {
