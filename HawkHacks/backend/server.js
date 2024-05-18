@@ -11,10 +11,6 @@ const connectDB = require('./config/dbCon');
 
 connectDB();
 
-// const {TwitterApi} = require('twitter-api-v2');
-const app = express();
-const port = 5000;
-
 
 
 const {api_key, api_secret_key, access_token, access_token_secret, client_id_linkedin} = process.env;
@@ -25,6 +21,9 @@ const oauth2URL_twitter = `https://twitter.com/i/oauth2/authorize?response_type=
 oauth_callback=true`;
 const oauth2URL_linkedin = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&
 state=987654321&scope=profile&client_id=${client_id_linkedin}&&redirect_uri=https%3A%2F%2Fgithub.com`;
+app.get('/' , (req, res) => {
+    res.send('Hello World');
+});
 app.get('/linkedin', (req, res) => {
     res.redirect(oauth2URL_linkedin);
 });
@@ -35,11 +34,9 @@ app.get('/twitter', (req, res) => {
 mongoose.connection.once('open', () =>{
     console.log("connected to mongoDB")
     app.listen(port, () => {
-        // getTweets();
         console.log(`Server is running on port: ${port}`);
-        console.log('Oauth page: ', oauth2URL);
     });
-})
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
 });
+// app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+// });
