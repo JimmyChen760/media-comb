@@ -1,6 +1,8 @@
 import React from 'react';
 import Dashboard from './Dashboard.jsx'; // Adjust the path as necessary
+
 import { Link } from 'react-router-dom'
+
 
 function Login() {
   const handleRedditLogin = () => {
@@ -14,6 +16,7 @@ function Login() {
     console.log('Initiate Twitter login');
     setIsAuthenticated(true);
   };
+
 
   const handleLogin = () => {
 
@@ -53,6 +56,7 @@ function Login() {
       <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
     </div>
 </div>
+
     
     
   );
