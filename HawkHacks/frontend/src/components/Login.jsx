@@ -15,6 +15,7 @@ function Login() {
     setIsAuthenticated(true);
   };
 
+
   const handleLogin = () => {
 
   }
@@ -53,6 +54,7 @@ function Login() {
       <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
     </div>
 </div>
+
     
     
   );
