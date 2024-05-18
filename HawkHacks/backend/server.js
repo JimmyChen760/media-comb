@@ -17,6 +17,7 @@ const {api_key, api_secret_key, access_token, access_token_secret, bearer_token}
 //     accessSecret: access_token_secret,
 // });
 const oauthURL = `https://api.twitter.com/oauth/authorize?oauth_token=${api_key}`;
+const oauth2URL = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${api_key}&redirect_uri=https://localhost:5000&scope=tweet.read%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain`;
 // console.log(oauthURL);
 // const getTweets = async () => {
 
@@ -37,4 +38,5 @@ const oauthURL = `https://api.twitter.com/oauth/authorize?oauth_token=${api_key}
 app.listen(port, () => {
     // getTweets();
     console.log(`Server is running on port: ${port}`);
+    console.log('Oauth page: ', oauth2URL);
 });
