@@ -1,42 +1,80 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+}
+
+.login {
+  /* position:absolute ; */
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  width: 500px;
+  height: 100px;
+}
+
+.login h2 {
+  color: #e8e1e1;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+.login-button{
+  display: inline;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #232121; /* Green background */
+  color: white; /* White text */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#twitter-button:hover {
+  background-color: #3282c3; /* Darker green background on hover */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#reddit-button:hover {
+  background-color: orange; /* Darker green background on hover */
 }
 
-.card {
-  padding: 2em;
+.login-button:active {
+  /* background-color: #45a049; */
+  box-shadow: 0 2px #666; /* Push down shadow on click */
+  transform: translateY(2px); /* Slightly push the button down */
 }
 
-.read-the-docs {
-  color: #888;
+.dashboard{
+  align-items:center;
+  
+
+}
+#dashboard-title{
+  text-align: center;
+}
+
+.dashboard-wall{
+  /* background-color: white; */
+  outline:0.5px solid white;
+  width:400px;
+  height: 800px;
+}
+
+#post-info{
+  color:red;
+}
+.dashboard-post{
+  
+  align-items:center;
+  margin:auto;
+  width: 350px;
+  height: 200px;
+  background-color: white;
+  opacity: 50%;
 }
