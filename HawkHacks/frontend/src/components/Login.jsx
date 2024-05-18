@@ -8,16 +8,23 @@ function Login() {
   const handleRedditLogin = () => {
     // Placeholder for Reddit OAuth logic
     console.log('Initiate Reddit login');
+    window.location='http://localhost:5000/reddit';
     setIsAuthenticated(true);
   };
 
   const handleTwitterLogin = () => {
     // Placeholder for Twitter OAuth logic
     console.log('Initiate Twitter login');
+    window.location='http://localhost:5000/twitter';
     setIsAuthenticated(true);
   };
 
-
+  const handleLinkedinLogin = () => {
+    // Placeholder for Linkedin OAuth logic
+    console.log('Initiate Linkedin login');
+    window.location='http://localhost:5000/linkedin';
+    setIsAuthenticated(true);
+  }
   const handleLogin = () => {
 
   }
@@ -54,6 +61,7 @@ function Login() {
     <div>
       <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit</button>
       <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
+      <button id = "linkedin-button" className = "login-button" onClick={handleLinkedinLogin}>Connect with Linkedin</button>
     </div>
 </div>
 
