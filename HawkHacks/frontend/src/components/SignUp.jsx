@@ -1,37 +1,50 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { register } from '../connect/api';
-
+import { register } from "../connect/api";
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const history = useNavigate();
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await register(username, password);
+      await register({ username, password });
+      setUsername('');
+      setPassword('');
+      setError('');
       alert('User registered successfully');
-      history.push('/login');
     } catch (error) {
-      alert('Error signing up: ' + error.message);
+      setError(error.response?.data?.message || 'Error signing up');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h2>Signup</h2>
-      <div>
-        <label>Username</label>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </div>
-      <button type="submit">Signup</button>
-    </form>
+      {error && <p>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 };
 

@@ -1,63 +1,27 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
-const axios = require('axios');
-const cors = require('cors')
-const authController = require("./controllers/authController")
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
+require('dotenv').config();
 
-const mongoose = require("mongoose");
-// const {TwitterApi} = require('twitter-api-v2');
 const app = express();
-const port = 5000;
-// connecting to db
-const connectDB = require('./config/dbCon');
+const port = process.env.PORT || 5000;
 
-connectDB();
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('dev'));
 
-app.use(cors()); 
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+// Routes
+const authRoutes = require('./routes/authRoute');
+app.use('/', authRoutes);
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-
-const {api_key, api_secret_key, access_token, access_token_secret, bearer_token} = process.env;
-// const client = new TwitterApi({
-//     appKey: api_key,
-//     appSecret: api_secret_key,
-//     accessToken: access_token,
-//     accessSecret: access_token_secret,
-// });
-const oauthURL = `https://api.twitter.com/oauth/authorize?oauth_token=${api_key}`;
-const oauth2URL = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${api_key}&redirect_uri=https://localhost:5000&scope=tweet.read%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain`;
-// console.log(oauthURL);
-// const getTweets = async () => {
-
-//     try {
-//       const response = await axios.get('https://api.twitter.com/2/tweets', {
-//         headers: {
-//           'Authorization': `Bearer ${bearer_token}`
-//         },
-//         params: {
-//           'ids': '1453489038376136707,1453488838376136707'  // Replace with the tweet IDs you want to fetch
-//         }
-//       });
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error('Error fetching tweets:', error);
-//     }
-//   };
-
-const authRoutes = require('./routes/authRoutes');
-
-app.use('/api/auth', authRoutes);
-
-app.post('/api/auth/signup', authController.signup)
-app.post('/api/auth/login', authController.login)
-
-
-mongoose.connection.once('open', () =>{
-    console.log("connected to mongoDB")
-    app.listen(port, () => {
-        // getTweets();
-        console.log(`Server is running on port: ${port}`);
-    });
-})
