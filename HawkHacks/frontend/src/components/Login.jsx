@@ -36,8 +36,6 @@ const Signin = () => {
 
         const dataResponse = await response.json()
 
-        console.log("dataREspnse",dataResponse)
-
         if(dataResponse.error){
             toast.error(dataResponse.message)
         }

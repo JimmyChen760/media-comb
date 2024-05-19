@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import imageToBase64 from '../processors/ImageProcessor'
+import ImageProcessor from '../processors/ImageProcessor'
 import { toast } from 'react-toastify'
 
 const Siginup = () => {
@@ -34,7 +34,7 @@ const Siginup = () => {
 
         if(file?.name){
             console.log(file)
-         Image64 = await imageToBase64(file)
+         Image64 = await ImageProcessor(file)
         }
 
      
@@ -46,7 +46,7 @@ const Siginup = () => {
             }
         })
 
-        console.log("imageToBase64",Image64)
+        console.log("ImageProcessor",Image64)
     }   
 
 

@@ -1,15 +1,15 @@
-const imageToBase64 = async(file) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
+const imageProcessor = async(file) => {
+    const fileRead = new FileReader()
+    fileRead.readAsDataURL(file)
 
     const data = new Promise((resolve,reject)=>{
-        reader.onload = () => resolve(reader.result)
+        fileRead.onload = () => resolve(fileRead.result)
 
-        reader.onerror = (error) => reject(error)
+        fileRead.onerror = (error) => reject(error)
     })
 
     return data
 
 }
 
-export default imageToBase64
+export default imageProcessor

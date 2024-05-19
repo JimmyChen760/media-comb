@@ -9,7 +9,7 @@ import Profile from '../components/Profile'
 
 const router = createBrowserRouter([
     {
-        path : "/",
+        path : "*",
         element : <App/>,
         children : [
             {
