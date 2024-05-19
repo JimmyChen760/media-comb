@@ -245,56 +245,218 @@ button > img {
   background-color: white;
   opacity: 50%;
 }
+.posts{
+  display:flex;
+  flex-direction:column;
+  /* justify-content:center; */
+  align-items:center;
+  /* height:100%;
+  width:100%; */
+  /* border:1px solid red; */
 
-.post{
-  background-color: black;
-  border: 1px, black;
-  border-radius: 5%;
+}
+.post-area{
+  display:flex;
+  justify-content:center;
+}
+.post {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
   margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.author{
-  color: #666;
-  margin:auto;
-  padding-left: 10px;
-  padding-top:5px;
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.screen-name{
-  padding-left: 10px;
+.profile-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-.post-info{
-  font-size: 10px;
-  padding-left:15px;
+.author {
+  font-size: 18px;
+  margin: 0;
 }
 
-.post-stats{
-  padding-top: 15px;
-  padding-bottom: 10px;
-  margin-left: 60px;
-  
+.screen-name {
+  font-size: 14px;
+  color: #555;
 }
 
-.likes{
-  margin-left: 100px;
-  color: #666;
-
+.content {
+  margin-bottom: 10px;
 }
 
+.post-info {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
 
-.retweets{
-  color: #666;
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.retweets, .likes {
+  font-size: 14px;
+  color: #333;
 }
 
 .content{
   padding-left: 15px;
   padding-right: 15px;
 }
+.linkedin-post {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.linkedin-post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.linkedin-profile-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.linkedin-post-header-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkedin-author {
+  font-size: 18px;
+  margin: 0;
+}
+
+.linkedin-screen-name {
+  font-size: 14px;
+  color: #555;
+}
+
+.linkedin-content {
+  margin-bottom: 10px;
+}
+
+.linkedin-post-info {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.linkedin-post-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkedin-likes, .linkedin-comments, .linkedin-shares {
+  font-size: 14px;
+  color: #333;
+}
 
 /* .dashboard{
   margin: auto;
   justify-content: space-between;
 } */
+.reddit-post {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.reddit-post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.reddit-profile-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.reddit-post-header-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.reddit-author {
+  font-size: 18px;
+  margin: 0;
+}
+
+.reddit-screen-name {
+  font-size: 14px;
+  color: #555;
+}
+
+.reddit-subreddit {
+  font-size: 14px;
+  color: #888;
+}
+
+.reddit-content {
+  margin-bottom: 10px;
+}
+
+.reddit-post-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reddit-post-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888;
+  margin-top: auto;
+}
+
+.reddit-date-posted {
+  font-size: 12px;
+  color: #888;
+}
+
+.reddit-source {
+  font-size: 12px;
+  color: #888;
+}
+
+.reddit-upvotes, .reddit-comments {
+  font-size: 14px;
+  color: #333;
+}

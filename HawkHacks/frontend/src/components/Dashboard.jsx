@@ -38,7 +38,8 @@ function Dashboard(props) {
   const handleRedditLogin = () => {
     // Placeholder for Reddit OAuth logic
     console.log('Initiate Reddit login');
-    window.location='http://localhost:5000/reddit';
+    // window.location='http://localhost:5000/reddit';
+    props.setConnectedReddit(true);
     connections++;
     // setIsAuthenticated(true);
   };
@@ -46,7 +47,8 @@ function Dashboard(props) {
   const handleTwitterLogin = () => {
     // Placeholder for Twitter OAuth logic
     console.log('Initiate Twitter login');
-    window.location='http://localhost:5000/twitter';
+    // window.location='http://localhost:5000/twitter';
+    props.setConnectedTwitter(true);
     connections++;
     // setIsAuthenticated(true);
   };
@@ -88,10 +90,10 @@ function Dashboard(props) {
               // <Post className = "post-box" post={post} />
               console.log(post.type);
               return(
-                <div key={post.key}>
-                {post.type == "twitter" && <Post className = "post-box" post={post} />}
-                {post.type == "reddit" && <RedditPost className = "post-box" post={post} />}
-                {post.type == "linkedin" && <LinkedinPost className = "post-box" post={post} />}
+                <div className="post-area" key={post.key}>
+                {post.type == "twitter" && props.connectedTwitter && <Post className = "post-box" post={post} />}
+                {post.type == "reddit" && props.connectedReddit && <RedditPost className = "post-box" post={post} />}
+                {post.type == "linkedin" && props.connectedLinkedin && <LinkedinPost className = "post-box" post={post} />}
                 </div>
               )
             })}
