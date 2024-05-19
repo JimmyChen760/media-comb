@@ -1,7 +1,8 @@
 import React from 'react';
 import Post from './Post.jsx';
-
-
+import reddit from '../assets/reddit_logo.png';
+import linkedin from '../assets/LinkedIn_logo.png';
+import twitter from '../assets/twitter_logo.png';
 var post1 = {
   "created_at": "Wed Oct 10 20:19:24 +0000 2018",
   "id": 1050118621198921728,
@@ -33,6 +34,7 @@ function Dashboard(props) {
     // Placeholder for Reddit OAuth logic
     console.log('Initiate Reddit login');
     window.location='http://localhost:5000/reddit';
+    connections++;
     // setIsAuthenticated(true);
   };
 
@@ -40,6 +42,7 @@ function Dashboard(props) {
     // Placeholder for Twitter OAuth logic
     console.log('Initiate Twitter login');
     window.location='http://localhost:5000/twitter';
+    connections++;
     // setIsAuthenticated(true);
   };
 
@@ -47,23 +50,43 @@ function Dashboard(props) {
     // Placeholder for Linkedin OAuth logic
     console.log('Initiate Linkedin login');
     window.location='http://localhost:5000/linkedin';
-    // setIsAuthenticated(true);
+    connections++;
+    props.setConnectedLinkedin(true);
   }
-  if(!props.connectedLinkedin && !props.connectedTwitter && !props.connectedReddit){
+  let connections = 1;
+  if(props.connectedLinkedin){
+    connections+= 1;
+
+  }
+  if(props.connectedTwitter){
+    connections+= 1;
+  }
+  if(props.connectedReddit){
+    connections+= 1;
+  }
     return (
       <div className="dashboard">
         <h2 id="dashboard-title">Dashboard</h2>
-        <p>Connect your social media accounts to see your feed here</p>
-        <div>
-        <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit</button>
-        <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
-        <button id = "linkedin-button" className = "login-button" onClick={handleLinkedinLogin}>Connect with Linkedin</button>
-    </div>
+        <p className="dashboard-desc">
+          {connections == 0 && "Connect your social media accounts to see your feed here"}
+          {connections > 0 && connections < 3 && "Connect more social media accounts to grow your feed"}
+        </p>
+        <div className="connections">
+          {!props.connectedReddit && <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit <img src={reddit}/></button>}
+          {!props.connectedTwitter && <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X<img src={twitter}/></button>}
+          {!props.connectedLinkedin && <button id = "linkedin-button" className = "login-button" onClick={handleLinkedinLogin}>Connect with Linkedin <img src={linkedin}/></button>}
+        </div>
+        {connections > 0 &&  
+          <div className="posts">
+            <Post className = "post-box" post={post1} />
+            <Post  className = "post-box" post={post1} />
+            <Post  className = "post-box" post={post1} />
+        </div>}
       </div>
     );
   }
-  return (
-    // {!props.connectedLinkedin && <p>Connect to Linkedin</p>}
+  // return (
+  //   // {!props.connectedLinkedin && <p>Connect to Linkedin</p>}
     <div className="dashboard">
       <div className = "dashboard-wall">
       <h2 id="dashboard-title">Dashboard</h2>
@@ -73,7 +96,7 @@ function Dashboard(props) {
       </div>
       
     </div>
-  );
-}
+  // );
+// }
 
 export default Dashboard;

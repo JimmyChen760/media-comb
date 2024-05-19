@@ -92,13 +92,14 @@ function Login() {
           
     </form>
     <div className="login-details">
-            <button className='sign-up-btn' onClick={handleLogin}>Login</button>
-            <p>Don't Have An Account?</p>
-            <Link to='/signup' className='btn btn-default'>
-                Sign Up
-            </Link>
-          </div>
-    
+      <Link to='/' className='login-link-'>
+        <button className='sign-up-btn' onClick={handleLogin}>Login</button>
+      </Link>
+      <p>Don't Have An Account?</p>
+      <Link to='/signup' className='btn btn-default'>
+          Sign Up
+      </Link>
+    </div>
   </div>
 
     
