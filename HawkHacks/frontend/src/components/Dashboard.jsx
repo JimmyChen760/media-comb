@@ -99,10 +99,6 @@ function Dashboard(props) {
                 </div>
               )
             })}
-            {/* <Post className = "post-box" post={post1} />
-            <Post  className = "post-box" post={post1} />
-            <Post  className = "post-box" post={post1} /> */}
-            <Post  className = "post-box" post={post1} /> */}
         </div>}
       </div>
     );
