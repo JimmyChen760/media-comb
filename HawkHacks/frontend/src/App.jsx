@@ -21,9 +21,6 @@ function App() {
   const [connectedTwitter, setConnectedTwitter] = useState(false) ;
   const [connectedReddit, setConnectedReddit] = useState(false);
 
-  const [connectedLinkedin, setConnectedLinkedin] = useState(false);
-  const [connectedTwitter, setConnectedTwitter] = useState(false) ;
-  const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
     <>
