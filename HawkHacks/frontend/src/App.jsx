@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import Login from './components/Login.jsx';
-
-import SignUp from './components/SignUp.jsx'
-import Dashboard from './components/Dashboard.jsx';
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import NavBar from './components/Navbar.jsx'
-import axios from 'axios';
-
-axios.defaults.baseUrl = 'http://localhost:5000'
-axios.defaults.withCredentials = true
+import { Outlet, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import Navbar from "./components/Navbar"
 
 function App() {
-  const [connectedLinkedin, setConnectedLinkedin] = useState(false);
-  const [connectedTwitter, setConnectedTwitter] = useState(false);
-  const [connectedReddit, setConnectedReddit] = useState(false);
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    navigate('Signup')
+  },[])
 
   return (
-
-    <BrowserRouter>
-      <NavBar/>
-      <Routes>
-        
-        <Route path='/' element={<Dashboard/>}></Route>
-        <Route path='/Login' element={<Login/>}></Route>
-        <Route path='/Signup' element={<SignUp/>}></Route>
-      </Routes>
-    </BrowserRouter>
-    
-
+     <>
+       <ToastContainer/>
+       <main className='main'>
+        <Navbar/>
+            <Outlet/>
+       </main>
+     </>
   );
 }
 
