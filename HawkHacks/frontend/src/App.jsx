@@ -12,7 +12,9 @@ axios.defaults.baseUrl = 'http://localhost:5000'
 axios.defaults.withCredentials = true
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [connectedLinkedin, setConnectedLinkedin] = useState(false);
+  const [connectedTwitter, setConnectedTwitter] = useState(false);
+  const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
 
