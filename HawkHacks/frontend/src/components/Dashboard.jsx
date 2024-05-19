@@ -28,9 +28,42 @@ var post1 = {
   "retweet_count": 284,
   "favorite_count": 503
 };
-function Dashboard() {
+function Dashboard(props) {
+  const handleRedditLogin = () => {
+    // Placeholder for Reddit OAuth logic
+    console.log('Initiate Reddit login');
+    window.location='http://localhost:5000/reddit';
+    // setIsAuthenticated(true);
+  };
+
+  const handleTwitterLogin = () => {
+    // Placeholder for Twitter OAuth logic
+    console.log('Initiate Twitter login');
+    window.location='http://localhost:5000/twitter';
+    // setIsAuthenticated(true);
+  };
+
+  const handleLinkedinLogin = () => {
+    // Placeholder for Linkedin OAuth logic
+    console.log('Initiate Linkedin login');
+    window.location='http://localhost:5000/linkedin';
+    // setIsAuthenticated(true);
+  }
+  if(!props.connectedLinkedin && !props.connectedTwitter && !props.connectedReddit){
+    return (
+      <div className="dashboard">
+        <h2 id="dashboard-title">Dashboard</h2>
+        <p>Connect your social media accounts to see your feed here</p>
+        <div>
+        <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit</button>
+        <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
+        <button id = "linkedin-button" className = "login-button" onClick={handleLinkedinLogin}>Connect with Linkedin</button>
+    </div>
+      </div>
+    );
+  }
   return (
-    
+    // {!props.connectedLinkedin && <p>Connect to Linkedin</p>}
     <div className="dashboard">
       <div className = "dashboard-wall">
       <h2 id="dashboard-title">Dashboard</h2>

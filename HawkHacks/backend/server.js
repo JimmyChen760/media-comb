@@ -13,38 +13,12 @@ const connectDB = require('./config/dbCon');
 
 connectDB();
 
+
 app.use(cors()); 
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
 
-const {api_key, api_secret_key, access_token, access_token_secret, bearer_token} = process.env;
-// const client = new TwitterApi({
-//     appKey: api_key,
-//     appSecret: api_secret_key,
-//     accessToken: access_token,
-//     accessSecret: access_token_secret,
-// });
-const oauthURL = `https://api.twitter.com/oauth/authorize?oauth_token=${api_key}`;
-const oauth2URL = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${api_key}&redirect_uri=https://localhost:5000&scope=tweet.read%20users.read%20offline.access&state=state&code_challenge=challenge&code_challenge_method=plain`;
-// console.log(oauthURL);
-// const getTweets = async () => {
 
-//     try {
-//       const response = await axios.get('https://api.twitter.com/2/tweets', {
-//         headers: {
-//           'Authorization': `Bearer ${bearer_token}`
-//         },
-//         params: {
-//           'ids': '1453489038376136707,1453488838376136707'  // Replace with the tweet IDs you want to fetch
-//         }
-//       });
-//       console.log(response.data);
-//     } catch (error) {
-//       console.error('Error fetching tweets:', error);
-//     }
-//   };
+const {api_key, api_secret_key, access_token, access_token_secret, client_id_linkedin} = process.env;
 
 const authRoutes = require('./routes/authRoutes');
 
@@ -54,10 +28,31 @@ app.post('/api/auth/signup', authController.signup)
 app.post('/api/auth/login', authController.login)
 
 
+const oauth2URL_twitter = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${api_key}
+&redirect_uri=https://localhost:5000&scope=tweet.read%20users.read%20offline.access&state=state&
+oauth_callback=true`;
+const oauth2URL_linkedin = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&
+state=987654321&scope=profile&client_id=${client_id_linkedin}&&redirect_uri=https%3A%2F%2Fgithub.com`;
+app.get('/' , (req, res) => {
+    res.send('Hello World');
+});
+app.get('/linkedin', (req, res) => {
+    res.redirect(oauth2URL_linkedin);
+});
+app.get('/twitter', (req, res) => {
+    res.redirect(oauth2URL_twitter);
+});
+
 mongoose.connection.once('open', () =>{
     console.log("connected to mongoDB")
     app.listen(port, () => {
-        // getTweets();
         console.log(`Server is running on port: ${port}`);
     });
+
 })
+
+});
+// app.listen(port, () => {
+//     console.log(`Server is running on port: ${port}`);
+// });
+
