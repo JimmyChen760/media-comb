@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -23,6 +24,7 @@ const Signin = () => {
     }
 
 
+
     const handleSubmit = async(e) => {
         e.preventDefault()
 
@@ -40,6 +42,7 @@ const Signin = () => {
             toast.error(dataResponse.message)
         }
 
+
         if(dataResponse.success){
             toast.success(dataResponse.message)
             localStorage.setItem('token',dataResponse.token)
@@ -49,6 +52,7 @@ const Signin = () => {
 
 
     console.log("data",data)
+
 
   return (
     <div className='h-screen-center'>
@@ -89,3 +93,4 @@ const Signin = () => {
 }
 
 export default Signin
+
