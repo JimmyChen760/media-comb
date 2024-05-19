@@ -1,8 +1,13 @@
-import React from 'react';
-import Dashboard from './Dashboard.jsx'; // Adjust the path as necessary
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'
+import { login } from '../connect/api'
 
-function Login() {
+const Login = ({ setToken }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useNavigate();
+
   const handleRedditLogin = () => {
     // Placeholder for Reddit OAuth logic
     console.log('Initiate Reddit login');
@@ -15,49 +20,39 @@ function Login() {
     setIsAuthenticated(true);
   };
 
-
-  const handleLogin = () => {
-
-  }
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { token } = await login(username, password);
+      setToken(token.push('/'));
+    } catch (error) {
+      alert('Error logging in: ' + error.message);
+    }
+  };
 
   return (
-    
-<div>
-  <form className='login'>
-      <h1>Log In</h1>
-      <label>username:</label>
-      <input type="text"
-          name="username"
-          placeholder="username"
-          className="login-form-textbox" />
-      <label>password:</label>
-      <input type="password" 
-          name="password"
-          placeholder="password"
-          className="login-form-textbox" />
-      <input type="password" 
-          name="password"
-          placeholder="re-enter password"
-          className="login-form-textbox" />
-      
-        <div>
-        <button className='sign-up-btn' onClick={handleLogin}>Login</button>
-            <p>Don't Have An Account?</p>
-            <Link to='/signup' className='btn btn-default'>
-                Sign Up
-            </Link>
-        </div>
-    </form>
     <div>
-      <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit</button>
-      <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
+        <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <div>
+            <label>Username</label>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </div>
+        <button type="submit">Login</button>
+        </form>
+        <Link to='/signup' className='btn btn-default'>
+            Sign Up
+        </Link>
+        <div>
+            <button id = "reddit-button" className = "login-button" onClick={handleRedditLogin}>Connect with Reddit</button>
+            <button id = "twitter-button" className = "login-button" onClick={handleTwitterLogin}>Connect with X</button>
+        </div>
     </div>
-</div>
-
-    
-    
   );
-}
+};
 
 export default Login;

@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const axios = require('axios');
+const cors = require('cors')
+const authController = require("./controllers/authController")
 
 const mongoose = require("mongoose");
 // const {TwitterApi} = require('twitter-api-v2');
@@ -11,6 +13,7 @@ const connectDB = require('./config/dbCon');
 
 connectDB();
 
+app.use(cors()); 
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -43,17 +46,18 @@ const oauth2URL = `https://twitter.com/i/oauth2/authorize?response_type=code&cli
 //     }
 //   };
 
+const authRoutes = require('./routes/authRoutes');
+
+app.use('/api/auth', authRoutes);
+
+app.post('/api/auth/signup', authController.signup)
+app.post('/api/auth/login', authController.login)
+
 
 mongoose.connection.once('open', () =>{
     console.log("connected to mongoDB")
     app.listen(port, () => {
         // getTweets();
         console.log(`Server is running on port: ${port}`);
-        console.log('Oauth page: ', oauth2URL);
     });
 })
-app.listen(port, () => {
-    // getTweets();
-    console.log(`Server is running on port: ${port}`);
-    console.log('Oauth page: ', oauth2URL);
-});
