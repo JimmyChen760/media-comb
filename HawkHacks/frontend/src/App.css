@@ -168,7 +168,7 @@ body{
 
 
 #twitter-button:hover {
-  background-color: #3282c3; /* Darker green background on hover */
+  background-color: rgb(46, 45, 48); /* Darker green background on hover */
 }
 
 #reddit-button:hover {

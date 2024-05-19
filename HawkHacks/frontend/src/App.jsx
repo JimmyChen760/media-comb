@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true
 
 function App() {
   const [connectedLinkedin, setConnectedLinkedin] = useState(false);
-  const [connectedTwitter, setConnectedTwitter] = useState(false);
+  const [connectedTwitter, setConnectedTwitter] = useState(false) ;
   const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
