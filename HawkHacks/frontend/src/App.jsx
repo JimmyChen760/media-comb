@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
-import Login from './components/Login.jsx';
-
-import SignUp from './components/SignUp.jsx'
-import Dashboard from './components/Dashboard.jsx';
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import NavBar from './components/Navbar.jsx'
-import axios from 'axios';
+import { Outlet, useNavigate, BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect, useState } from 'react';
+import Navbar from "./components/Navbar"
+import Dashboard from "./components/Dashboard"
+import Login from "./components/Login"
+import SignUp from "./components/SignUp"
 
-axios.defaults.baseUrl = 'http://localhost:5000'
-axios.defaults.withCredentials = true
+
 
 function App() {
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    navigate('Signup')
+  },[])
+
+  const [connectedLinkedin, setConnectedLinkedin] = useState(false);
+  const [connectedTwitter, setConnectedTwitter] = useState(false) ;
+  const [connectedReddit, setConnectedReddit] = useState(false);
+
   const [connectedLinkedin, setConnectedLinkedin] = useState(false);
   const [connectedTwitter, setConnectedTwitter] = useState(false) ;
   const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
-
-    <BrowserRouter>
-      <NavBar/>
+    <>
+    <ToastContainer/>
+      <Navbar/>
+      <Outlet/>
       <Routes>
-        
         <Route path='/' element={<Dashboard
           connectedLinkedin={connectedLinkedin}
           connectedTwitter={connectedTwitter}
@@ -30,12 +39,8 @@ function App() {
           setConnectedTwitter={setConnectedTwitter}
           setConnectedReddit={setConnectedReddit}
         />}></Route>
-        <Route path='/Login' element={<Login/>}></Route>
-        <Route path='/Signup' element={<SignUp/>}></Route>
       </Routes>
-    </BrowserRouter>
-    
-
+   </>
   );
 }
 
