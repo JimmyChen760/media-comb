@@ -21,7 +21,7 @@
         "location": "San Francisco, CA",
         "description": "The Real Twitter API. Tweets about API changes, service issues and our Developer Platform.",
         "url": "https://t.co/8IkCzCDr19",
-        "profile_image_url_https": "https://pbs.twimg.com/profile_images/942858479592554497/BbazLO9L_normal.jpg"
+        "profile_image_url_https": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/1024px-Twitter_bird_logo_2012.svg.png"
     },
     "retweet_count": 284,
     "favorite_count": 503
@@ -39,7 +39,7 @@
         "location": "Mountain View, CA",
         "description": "The official LinkedIn API. Updates about our Developer Platform.",
         "url": "https://www.linkedin.com/company/linkedin",
-        "profile_image_url_https": "https://media-exp1.licdn.com/dms/image/C560BAQHhxB7zqVw7Fg/company-logo_200_200/0/1519856215226?e=2159024400&v=beta&t=n8fWZ4mHt4ryLZ4u6R2hMyLKn7D3IzUPR0MN2_vMmgg"
+        "profile_image_url_https": "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
     },
     "like_count": 120,
     "comment_count": 45,
@@ -53,7 +53,7 @@
     "type": "reddit",
     "id": 1234567890,
     "id_str": "1234567890",
-    "text": "Check out this amazing new feature in our product! #ProductLaunch",
+    "text": "Reddit API: We're thrilled to introduce our latest innovation—a groundbreaking feature that will revolutionize the way you experience our product! Join us as we unveil this exciting new addition and embark on an unforgettable journey of discovery and exploration. Don't miss out on the opportunity to be among the first to witness the future of technology unfold before your eyes. Stay tuned for updates, insights, and exclusive sneak peeks as we prepare to launch our #ProductLaunch.",
     "user": {
       "id": 987654321,
       "id_str": "987654321",
@@ -68,5 +68,25 @@
     "upvote_count": 250,
     "comment_count": 75,
     "source": "<a href=\"http://reddit.com\" rel=\"nofollow\">Reddit Web Client</a>"
-  }
+  },
+  {
+    "key": 4,
+    "type": "linkedin",
+    "created_at": "2024-05-19T12:00:00.000Z",
+    "text": "Excited to share that I've accepted a new position at Innovative Solutions Inc. as a Senior Software Engineer! Grateful for the opportunity and looking forward to contributing to innovative projects and collaborating with a talented team. Can't wait to embark on this new journey! #NewBeginnings #SoftwareEngineering #Excited",
+    "user": {
+        "id": 123456789,
+        "id_str": "123456789",
+        "name": "Tom Fitzgerald",
+        "screen_name": "TomFitzgerald",
+        "location": "San Francisco Bay Area",
+        "description": "Passionate about software engineering and innovation. Excited to join Innovative Solutions Inc.!",
+        "url": "https://www.linkedin.com/in/tomfitzgerald",
+        "profile_image_url_https": "https://example.com/tom_fitzgerald_profile_image.jpg"
+    },
+    "like_count": 150,
+    "comment_count": 30,
+    "share_count": 20,
+    "source": "<a href=\"http://linkedin.com\" rel=\"nofollow\">LinkedIn Web Client</a>"
+}
 ]
