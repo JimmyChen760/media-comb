@@ -1,10 +1,14 @@
 import React from 'react';
 import Post from './Post.jsx';
+import LinkedinPost from './LinkedinPost.jsx';
+import RedditPost from './RedditPost.jsx';
 import reddit from '../assets/reddit_logo.png';
 import linkedin from '../assets/LinkedIn_logo.png';
 import twitter from '../assets/twitter_logo.png';
-var post1 = {
+import postData from '../assets/postData.json'
+let post1 = {
   "created_at": "Wed Oct 10 20:19:24 +0000 2018",
+  "type": "twitter",
   "id": 1050118621198921728,
   "id_str": "1050118621198921728",
   "text": "To make room for more expression, we will now count all characters, including spaces and newlines, the same.",
@@ -29,6 +33,7 @@ var post1 = {
   "retweet_count": 284,
   "favorite_count": 503
 };
+let posts = [postData[1], postData[2], post1];
 function Dashboard(props) {
   const handleRedditLogin = () => {
     // Placeholder for Reddit OAuth logic
@@ -49,11 +54,12 @@ function Dashboard(props) {
   const handleLinkedinLogin = () => {
     // Placeholder for Linkedin OAuth logic
     console.log('Initiate Linkedin login');
-    window.location='http://localhost:5000/linkedin';
+    // window.location='http://localhost:5000/linkedin';
     connections++;
     props.setConnectedLinkedin(true);
+    console.log(props.connectedLinkedin);
   }
-  let connections = 1;
+  let connections = 0;
   if(props.connectedLinkedin){
     connections+= 1;
 
@@ -78,25 +84,23 @@ function Dashboard(props) {
         </div>
         {connections > 0 &&  
           <div className="posts">
-            <Post className = "post-box" post={post1} />
+            {posts.map((post) => {
+              // <Post className = "post-box" post={post} />
+              console.log(post.type);
+              return(
+                <div key={post.key}>
+                {post.type == "twitter" && <Post className = "post-box" post={post} />}
+                {post.type == "reddit" && <RedditPost className = "post-box" post={post} />}
+                {post.type == "linkedin" && <LinkedinPost className = "post-box" post={post} />}
+                </div>
+              )
+            })}
+            {/* <Post className = "post-box" post={post1} />
             <Post  className = "post-box" post={post1} />
-            <Post  className = "post-box" post={post1} />
+            <Post  className = "post-box" post={post1} /> */}
         </div>}
       </div>
     );
   }
-  // return (
-  //   // {!props.connectedLinkedin && <p>Connect to Linkedin</p>}
-    <div className="dashboard">
-      <div className = "dashboard-wall">
-      <h2 id="dashboard-title">Dashboard</h2>
-      <Post className = "post-box" post={post1} />
-      <Post  className = "post-box" post={post1} />
-      <Post  className = "post-box" post={post1} />
-      </div>
-      
-    </div>
-  // );
-// }
 
 export default Dashboard;
