@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true
 
 function App() {
   const [connectedLinkedin, setConnectedLinkedin] = useState(false);
-  const [connectedTwitter, setConnectedTwitter] = useState(false);
+  const [connectedTwitter, setConnectedTwitter] = useState(false) ;
   const [connectedReddit, setConnectedReddit] = useState(false);
 
   return (
@@ -22,7 +22,14 @@ function App() {
       <NavBar/>
       <Routes>
         
-        <Route path='/' element={<Dashboard/>}></Route>
+        <Route path='/' element={<Dashboard
+          connectedLinkedin={connectedLinkedin}
+          connectedTwitter={connectedTwitter}
+          connectedReddit={connectedReddit}
+          setConnectedLinkedin={setConnectedLinkedin}
+          setConnectedTwitter={setConnectedTwitter}
+          setConnectedReddit={setConnectedReddit}
+        />}></Route>
         <Route path='/Login' element={<Login/>}></Route>
         <Route path='/Signup' element={<SignUp/>}></Route>
       </Routes>
