@@ -57,8 +57,10 @@ function Dashboard(props) {
     // Placeholder for Linkedin OAuth logic
     console.log('Initiate Linkedin login');
     // window.location='http://localhost:5000/linkedin';
+    // window.location='http://localhost:5000/linkedin';
     connections++;
     props.setConnectedLinkedin(true);
+    console.log(props.connectedLinkedin);
     console.log(props.connectedLinkedin);
   }
   let connections = 0;
@@ -99,6 +101,7 @@ function Dashboard(props) {
             })}
             {/* <Post className = "post-box" post={post1} />
             <Post  className = "post-box" post={post1} />
+            <Post  className = "post-box" post={post1} /> */}
             <Post  className = "post-box" post={post1} /> */}
         </div>}
       </div>

@@ -1,59 +1,88 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../users/user');
+const userModel = require("../users/user")
+const bcryptjs = require('bcryptjs');
 
-const test = (req, res) => {
-  res.json('test is working')
+async function userSignUp(req,res){
+    try{
+
+        if(!req.body.email){
+            return res.status(400).json({
+                message : "Please provide email",
+                error : true,
+                success : false
+            })
+        }
+
+        if(!req.body.name){
+            return res.status(400).json({
+                message : "Please provide name",
+                error : true,
+                success : false
+            })
+        }
+
+        if(!req.body.password){
+            return res.status(400).json({
+                message : "Please provide passoword",
+                error : true,
+                success : false
+            })
+        }
+
+
+        const user = await userModel.findOne({email : req.body.email})
+
+        if(user){
+            return res.status(400).json({
+                message : "Already user exits",
+                error : true,
+                success : false
+            })
+        }
+
+        //convert password into hash
+        bcryptjs.genSalt(10,  function(err, salt) {
+            bcryptjs.hash(req.body.password, salt, async function(err, hash) {
+                // Store hash in your password DB.
+                if(err){
+                    return res.status(400).json({
+                        message : err,
+                        error : true,
+                        success : false
+                    })
+                }
+                console.log("hash",hash)
+
+                const payload = {
+                    ...req.body,
+                    password : hash
+                }
+
+                const userDetails = new userModel(payload)
+                const save = await userDetails.save()
+
+                return res.status(200).json({
+                    message : "User Created successfully",
+                    data : save,
+                    error : false,
+                    success : true
+                })
+
+            });
+        });
+        
+
+        
+
+
+
+    }catch(error){
+        res.status(500).json({
+            message : error,
+            error : true,
+            success : false
+        })
+    }
 }
 
-exports.signup = async (req, res) => {
-  try {
-    const { username, password } = req.body;
 
-    if (!username || !password) {
-      return res.status(400).json({ message: 'Username and password are required' });
-    }
-
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Username already exists' });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, password: hashedPassword });
-    await newUser.save();
-
-    res.status(201).json({ message: 'User registered successfully' });
-  } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
-
-exports.login = async (req, res) => {
-  try {
-    const { username, password } = req.body;
-
-    if (!username || !password) {
-      return res.status(400).json({ message: 'Username and password are required' });
-    }
-
-    const user = await User.findOne({ username });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
-  } catch (error) {
-    console.error('Error logging in:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
-
-module.exports(test)
+module.exports = userSignUp
