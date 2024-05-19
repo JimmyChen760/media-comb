@@ -1,58 +1,27 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
-const axios = require('axios');
-const cors = require('cors')
-const authController = require("./controllers/authController")
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
+require('dotenv').config();
 
-const mongoose = require("mongoose");
-// const {TwitterApi} = require('twitter-api-v2');
 const app = express();
-const port = 5000;
-// connecting to db
-const connectDB = require('./config/dbCon');
+const port = process.env.PORT || 5000;
 
-connectDB();
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('dev'));
 
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-app.use(cors()); 
+// Routes
+const authRoutes = require('./routes/authRoute');
+app.use('/', authRoutes);
 
-
-
-const {api_key, api_secret_key, access_token, access_token_secret, client_id_linkedin} = process.env;
-
-const authRoutes = require('./routes/authRoutes');
-
-app.use('/api/auth', authRoutes);
-
-app.post('/api/auth/signup', authController.signup)
-app.post('/api/auth/login', authController.login)
-
-
-const oauth2URL_twitter = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${api_key}
-&redirect_uri=https://localhost:5000&scope=tweet.read%20users.read%20offline.access&state=state&
-oauth_callback=true`;
-const oauth2URL_linkedin = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&
-state=987654321&scope=profile&client_id=${client_id_linkedin}&&redirect_uri=https%3A%2F%2Fgithub.com`;
-app.get('/' , (req, res) => {
-    res.send('Hello World');
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-app.get('/linkedin', (req, res) => {
-    res.redirect(oauth2URL_linkedin);
-});
-app.get('/twitter', (req, res) => {
-    res.redirect(oauth2URL_twitter);
-});
-
-mongoose.connection.once('open', () =>{
-    console.log("connected to mongoDB")
-    app.listen(port, () => {
-        console.log(`Server is running on port: ${port}`);
-    });
-
-})
-
-});
-// app.listen(port, () => {
-//     console.log(`Server is running on port: ${port}`);
-// });
-
