@@ -18,16 +18,17 @@ const Login = ({ setToken }) => {
   };
 
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+    
+    <div className="login">
+        <form className="login-form" onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <div>
             <label>Username</label>
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+            <input type="text" className="login-form-textbox" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
         <div>
             <label>Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input type="password" className="login-form-textbox"value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <button type="submit">Login</button>
         </form>
