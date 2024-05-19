@@ -1,21 +1,23 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth'; // Backend URL
-
+const instance = axios.create({
+  baseURL: '/', // Base URL
+  timeout: 5000, // Timeout setting
+});
 
 export const register = async (username, password) => {
   try {
-    const response = await axios.post(`${API_URL}/signup`, { username, password });
+    const response = await instance.post('/register', { username, password });
     return response.data;
   } catch (error) {
     throw error.response.data;
-  }
+  } 
 };
 
 
 export const login = async (username, password) => {
   try {
-    const response = await axios.post(`${API_URL}/login`, { username, password });
+    const response = await axios.post('/login', { username, password });
     return response.data;
   } catch (error) {
     throw error.response.data;
