@@ -45,10 +45,6 @@ function SignUp() {
                 Log In
             </Link>
         </div>
-        <div>
-            <button id = "reddit-button" className = "signup-button" onClick={handleRedditLogin}>Connect with Reddit</button>
-            <button id = "twitter-button" className = "signup-button" onClick={handleTwitterLogin}>Connect with X</button>
-        </div>
     </div>
     
   );
