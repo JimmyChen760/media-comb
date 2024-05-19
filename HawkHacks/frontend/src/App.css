@@ -312,7 +312,11 @@ button > img {
   font-size: 14px;
   color: #333;
 }
-
+.profile-image{
+  height:50px;
+  width:50px;
+  margin: 10px, 0 , 10px, 10px;
+}
 .content{
   padding-left: 15px;
   padding-right: 15px;

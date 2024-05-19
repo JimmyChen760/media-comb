@@ -7,7 +7,7 @@ const instance = axios.create({
 
 export const register = async (username, password) => {
   try {
-    const response = await instance.post('/register', { username, password });
+    const response = await instance.post('/Signup', { username, password });
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -17,7 +17,7 @@ export const register = async (username, password) => {
 
 export const login = async (username, password) => {
   try {
-    const response = await axios.post('/login', { username, password });
+    const response = await axios.post('/Login', { username, password });
     return response.data;
   } catch (error) {
     throw error.response.data;
